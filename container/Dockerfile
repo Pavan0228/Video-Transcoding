@@ -1,8 +1,6 @@
-FROM node:18-alpine 
+FROM node:18-alpine
 
-RUN apt update 
-RUN apt upgrade -y
-RUN apt add --no--cache ffmpeg
+RUN apk update && apk upgrade && apk add --no-cache ffmpeg
 
 WORKDIR /app
 
@@ -13,4 +11,4 @@ RUN npm install
 COPY index.js .
 COPY .env .
 
-CMD [ "npm","run","dev" ]
+CMD ["npm", "run", "dev"]
